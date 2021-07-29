@@ -1,7 +1,10 @@
-var express = require('express');
-var exphbs  = require('express-handlebars');
+const { News, User } = require("./models/indexModels");
 
-var app = express();
+const express = require('express');
+const exphbs  = require('express-handlebars');
+const sequelize = require("./config/connection");
+
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.engine('handlebars', exphbs());
@@ -14,4 +17,7 @@ app.get('/', function (req, res) {
     res.render('homepage');
 });
 
-app.listen(PORT, () => console.log('Now listening'));
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log("Now listening on PORT: " + PORT));
+  });
