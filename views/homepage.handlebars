@@ -1,3 +1,15 @@
 <ol class="post-list">
-TEST
+  {{#each posts}}
+    <li>
+      <div class="title">
+        {{title}}
+      </div>
+      <div class="contents">
+        {{contents}}
+      </div>
+      <div class="created_at">
+        {{created_at}}
+      </div>
+    </li>
+  {{/each}}
 </ol>
