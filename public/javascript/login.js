@@ -22,5 +22,9 @@ async function loginFormHandler(event) {
   }
 }
 
-document.querySelector(".login-form").addEventListener("submit", loginFormHandler);
+function redirectToSignupPage(event) {
+    document.location.replace("/signup/");
+}
 
+document.querySelector(".login-form").addEventListener("submit", loginFormHandler);
+document.querySelector("#signupButton").addEventListener("click", redirectToSignupPage);
